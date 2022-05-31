@@ -13,7 +13,7 @@ class UserWidget {
      * */
     constructor(element) {
         if (!element) {
-            throw new Error('Пустой элемент');
+            throw new Error('Ошибка UserWidget');
         }
         this.element = element;
     }

@@ -23,8 +23,11 @@ const createRequest = (options = {}) => {
         }
 
         try {
-            xhr.open(options.method, sendURL);
-            xhr.send(formData);
+            if (options.data) {
+                xhr.open(options.method, sendURL);
+                xhr.send(formData);
+            }
+
         } catch (err) {
             options.callback(err, null);
         }
