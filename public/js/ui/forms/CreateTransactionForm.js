@@ -49,7 +49,7 @@ class CreateTransactionForm extends AsyncForm {
             modalName = 'newIncome';
             break;
         }
-        document.forms[`new-${data.type}-form`].reset();
+        this.element.reset();
         App.getModal(modalName).close();
         App.update();
       }

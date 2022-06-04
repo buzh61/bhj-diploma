@@ -111,8 +111,11 @@ class User {
         createRequest({
             method: 'POST',
             url: this.URL + '/logout',
-            callback: () => {
-                callback();
+            callback: (err, response) => {
+                if (response) {
+                    User.unsetCurrent();
+                }
+                callback(err, response);
             }
         })
     }

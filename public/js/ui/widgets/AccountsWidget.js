@@ -18,8 +18,9 @@ class AccountsWidget {
             throw new Error('Ошибка AccountsWidget');
         }
         this.element = element;
-        this.registerEvents();
         this.update();
+        this.registerEvents();
+
     }
 
     /**
@@ -30,11 +31,17 @@ class AccountsWidget {
      * вызывает AccountsWidget.onSelectAccount()
      * */
     registerEvents() {
-        let newAccountBtn = document.querySelector('.create-account');
+        const newAccountBtn = document.querySelector('.accounts-panel');
+        newAccountBtn.onclick = (e) => {
+            e.preventDefault();
+            if (e.target.closest('span.create-account')) {
+                App.getModal('createAccount').open();
+            }
+            if (e.target.closest('li.account')) {
+                this.onSelectAccount(e.target.closest('li.account'))
+            }
+        };
 
-        newAccountBtn.onclick = () => {
-            App.getModal('new-account')
-        }
     }
 
     /**
